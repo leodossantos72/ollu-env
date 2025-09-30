@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami-ghcr
+  namespace: app-ollu
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: whoami-ghcr }
+  template:
+    metadata:
+      labels: { app: whoami-ghcr }
+    spec:
+      containers:
+        - name: whoami
+          image: ghcr.io/traefik/whoami:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet: { path: /, port: 80 }
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          resources:
+            requests: { cpu: 10m, memory: 32Mi }
+            limits:   { cpu: 100m, memory: 64Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami-ghcr
+  namespace: app-ollu
+spec:
+  type: NodePort
+  selector: { app: whoami-ghcr }
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: whoami-ghcr
+  namespace: app-ollu
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: whoami.local.ollu.test
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: whoami-ghcr
+                port:
+                  number: 80
