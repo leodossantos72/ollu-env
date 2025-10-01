@@ -5,12 +5,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./clusters/ollu/infra/cert-manager/issuers
-  prune: true
-  wait: true
-  timeout: 2m
+  dependsOn:
+    - name: infra-cert-manager
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: infra-cert-manager
+  path: ./clusters/ollu/infra/cert-manager/issuers
+  prune: true
+  timeout: 2m

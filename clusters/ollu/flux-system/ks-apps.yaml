@@ -5,12 +5,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./clusters/ollu/apps
-  prune: true
-  wait: true
-  timeout: 2m
+  dependsOn:
+    - name: infra-issuers
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: infra-issuers
+  path: ./clusters/ollu/apps
+  prune: true
+  timeout: 2m

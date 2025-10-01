@@ -5,11 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./clusters/ollu/infra/cert-manager/install
-  prune: true
-  wait: true
-  timeout: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
-  targetNamespace: cert-manager
+  path: ./clusters/ollu/infra/cert-manager/install
+  prune: true
+  timeout: 2m
