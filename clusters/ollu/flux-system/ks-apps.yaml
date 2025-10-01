@@ -6,6 +6,7 @@ metadata:
 spec:
   interval: 5m
   dependsOn:
+    - name: infra-ingress-nginx
     - name: infra-issuers
   sourceRef:
     kind: GitRepository
