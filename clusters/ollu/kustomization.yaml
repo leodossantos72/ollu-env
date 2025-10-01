@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - infra/ingress-nginx
   - apps/whoami
+- ./flux-system
