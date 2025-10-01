@@ -4,3 +4,4 @@ resources:
   - gotk-components.yaml
   - gotk-source.yaml
   - gotk-kustomization.yaml
+  - kustomizations-infra-apps.yaml
