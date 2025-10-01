@@ -6,7 +6,7 @@ HTTPS_NODEPORT ?= 30443
 
 check:
 	@HOST=$(HOST) HTTP_NODEPORT=$(HTTP_NODEPORT) HTTPS_NODEPORT=$(HTTPS_NODEPORT) \
-	/opt/ollu-dev/scripts/golden-check.sh
+	/var/opt/ollu-dev/scripts/golden-check.sh
 
 reconcile:
 	@kubectl annotate -n flux-system gitrepository/flux-system reconcile.fluxcd.io/requestedAt=$1759336323 --overwrite
