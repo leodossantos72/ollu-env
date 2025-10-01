@@ -47,6 +47,10 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - whoami.local.ollu.test
+      secretName: tls-whoami
   rules:
     - host: whoami.local.ollu.test
       http:
