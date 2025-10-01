@@ -1,3 +1,10 @@
 
 # backups locais
 *.bak.*
+.tmp
+_tmp_repo_sync/
+flux/
+scripts/
+scripts/**
+scripts/golden-check.sh*
+scripts/*
