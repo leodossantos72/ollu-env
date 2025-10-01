@@ -4,11 +4,16 @@ metadata:
   name: infra-ingress-nginx
   namespace: flux-system
 spec:
-  interval: 5m
-  path: ./clusters/ollu/infra/ingress-nginx
+  interval: 1m
   prune: true
+  path: ./clusters/ollu/infra/ingress-nginx
   sourceRef:
     kind: GitRepository
     name: flux-system
+    namespace: flux-system
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: ingress-nginx-controller
+      namespace: ingress-nginx
   timeout: 2m
-  wait: true
