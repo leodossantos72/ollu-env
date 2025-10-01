@@ -4,3 +4,5 @@ resources:
   - ./flux-system
   - infra/ingress-nginx
   - apps/whoami
+  - infra/cert-manager
+  - apps/whoami/certificate.yaml
