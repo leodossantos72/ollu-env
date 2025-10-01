@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kustomize.toolkit.fluxcd.io/v1","kind":"Kustomization","metadata":{"annotations":{},"name":"flux-system","namespace":"flux-system"},"spec":{"interval":"30s","path":"./clusters/ollu","prune":true,"sourceRef":{"kind":"GitRepository","name":"flux-system"}}}
+    reconcile.fluxcd.io/requestedAt: "2025-09-30T21:19:02.957087648-03:00"
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 30s
+  path: ./clusters/ollu
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

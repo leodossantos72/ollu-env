@@ -1,0 +1,18 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"source.toolkit.fluxcd.io/v1","kind":"GitRepository","metadata":{"annotations":{},"name":"flux-system","namespace":"flux-system"},"spec":{"interval":"30s","ref":{"branch":"main"},"secretRef":{"name":"flux-system"},"url":"https://github.com/leodossantos72/ollu-env.git"}}
+    reconcile.fluxcd.io/requestedAt: "2025-09-30T21:19:00.599660868-03:00"
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 30s
+  ref:
+    branch: main
+  secretRef:
+    name: flux-system
+  timeout: 1m0s
+  url: https://github.com/leodossantos72/ollu-env.git
